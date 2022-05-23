@@ -20,30 +20,25 @@ public class Author {
     public String getFullName() { // метод toString
         return name + " " + surname;
     }
+
     @Override
-    public boolean equals(Object other) {  //Сравнение объектов
-        if (this.getClass() != other.getClass()) {
-            return false;
-        }
-        Author c2 = (Author) other;
-        return name.equals(c2.name);
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
     }
 
     @Override
-    public int hashCode() { //Метод hashCode
-        return Objects.hash(name);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return name.equals(author.name) && surname.equals(author.surname);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname);
+    }
 }
